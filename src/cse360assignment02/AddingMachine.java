@@ -8,10 +8,11 @@ package cse360assignment02;
  * operations. Said memory can be cleared.
  *
  * @author      David Alejandro Umana Fleck
- * @version     1.0
+ * @version     2.0
  */
 public class AddingMachine {
     private int total;
+    private String history;
 
 
     /**
@@ -19,6 +20,7 @@ public class AddingMachine {
      */
     public AddingMachine () {
         total = 0;  // not needed - included for clarity
+        history = Integer.toString(total);
     }
 
     /**
@@ -26,7 +28,15 @@ public class AddingMachine {
      * @return value of Total
      */
     public int getTotal () {
-        return 0;
+        return total;
+    }
+
+    /**
+     * Get history
+     * @return history string
+     */
+    public String getHistory(){
+        return history;
     }
 
     /**
@@ -34,6 +44,8 @@ public class AddingMachine {
      * @param value
      */
     public void add (int value) {
+        total = total + value;
+        history = history + " + " + Integer.toString(value);
     }
 
     /**
@@ -41,6 +53,8 @@ public class AddingMachine {
      * @param value
      */
     public void subtract (int value) {
+        total = total - value;
+        history = history + " - " + Integer.toString(value);
     }
 
     /**
@@ -48,13 +62,15 @@ public class AddingMachine {
      * @return history of transactions
      */
     public String toString () {
-        return "";
+        return getHistory();
     }
 
     /**
      * Clears the memory
+     * Restarts history with current total.
      */
     public void clear() {
+        history = Integer.toString(total);
     }
 }
 
